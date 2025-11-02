@@ -1,0 +1,56 @@
+﻿/* Each square pad (label) */
+.form-check-label {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 90px;         
+  height: 65px;
+  border-radius: 10px;
+  font-size: 36px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  margin: 10px;          
+}
+
+/* Hide native checkboxes */
+.form-check-input {
+  display: none;
+}
+
+/* Default color states */
+#s1 + .form-check-label {
+  background-color: #f1c40f; /* Yellow */
+  color: #1f2833;
+}
+
+#d1 + .form-check-label {
+  background-color: #3498db; /* Light blue */
+  color: white;
+}
+
+#d2 + .form-check-label {
+    background-color: #3498db; /* Light blue */
+    color: white;
+}
+
+/* Glowing "active" states */
+#s1:checked + .form-check-label {
+  box-shadow: 0 0 5px 4px rgba(241, 196, 15, 0.9);
+  transform: scale(1.05);
+}
+
+#d1:checked + .form-check-label {
+  box-shadow: 0 0 5px 4px rgba(52, 152, 219, 0.9);
+  transform: scale(1.05);
+}
+
+#d2:checked + .form-check-label {
+  box-shadow: 0 0 5px 4px rgba(41, 128, 185, 0.9);
+  transform: scale(1.05);
+}
+
+/* Hover feedback */
+.form-check-label:hover {
+  opacity: 0.9;
+}

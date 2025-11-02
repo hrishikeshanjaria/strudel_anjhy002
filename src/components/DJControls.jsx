@@ -1,6 +1,8 @@
-﻿function DJControls({ songText, s1, setS1, d1, setD1, d2, setD2, onPreprocess }) {
-    const handleToggle = (setter, value, key) => {
-        const newValue = !value;
+﻿import "./DJControls.css";
+
+function DJControls({ songText, s1, setS1, d1, setD1, d2, setD2, onPreprocess }) {
+    const handleToggle = (setter, currentValue, key) => {
+        const newValue = !currentValue;
         setter(newValue);
         let processed = songText;
 
@@ -46,19 +48,19 @@
             <div className="form-check">
                 <input className="form-check-input" type="checkbox" value="" id="s1" checked={s1} onChange={() => handleToggle(setS1, s1, "s1")} />
                 <label className="form-check-label" htmlFor="s1">
-                         s1
+                    🎹
                     </label>
             </div>
             <div className="form-check">
                 <input className="form-check-input" type="checkbox" value="" id="d1" checked={d1} onChange={() => handleToggle(setD1, d1, "d1")} />
                 <label className="form-check-label" htmlFor="d1">
-                        d1
+                    🥁
                     </label>
             </div>
             <div className="form-check">
                 <input className="form-check-input" type="checkbox" value="" id="d2" checked={d2} onChange={() => handleToggle(setD2, d2, "d2")} />
                 <label className="form-check-label" htmlFor="d2">
-                    d2
+                    🥁
                 </label>
             </div>
         </>
