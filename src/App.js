@@ -77,7 +77,18 @@ export default function StrudelDemo() {
         globalEditor.stop()
     }
 
+    const handlePreprocess = (processed) => {
+        if (globalEditor) {
+            globalEditor.setCode(processed);
+            globalEditor.evaluate();
+        }
+    };
+
     const [songText, setSongText] = useState(stranger_tune)
+
+    const [s1, setS1] = useState(true);
+    const [d1, setD1] = useState(true);
+    const [d2, setD2] = useState(true);
 
 useEffect(() => {
 
@@ -113,10 +124,18 @@ useEffect(() => {
             });
             
         document.getElementById('proc').value = stranger_tune
+
+        let initial = stranger_tune;
+
+        initial = initial
+            .replaceAll("<s1>", s1 ? "" : "_")
+            .replaceAll("<d1>", d1 ? "" : "_")
+            .replaceAll("<d2>", d2 ? "" : "_");
+        globalEditor.setCode(initial);
         //SetupButtons()
         //Proc()
     }
-    globalEditor.setCode(songText);
+    
 }, [songText]);
 
 
@@ -145,7 +164,12 @@ return (
                         <div id="output" />
                     </div>
                     <div className="col-md-4">
-                        <DJControls/>
+                        <DJControls
+                            songText={songText}
+                            s1={s1} setS1={setS1}
+                            d1={d1} setD1={setD1}
+                            d2={d2} setD2={setD2}
+                            onPreprocess={handlePreprocess} />
                     </div>
                 </div>
             </div>
