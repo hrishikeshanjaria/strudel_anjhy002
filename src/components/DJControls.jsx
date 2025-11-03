@@ -1,6 +1,6 @@
 ﻿import "./DJControls.css";
 
-function DJControls({ songText, s1, setS1, d1, setD1, d2, setD2, onProcess }) {
+function DJControls({ songText, s1, setS1, d1, setD1, d2, setD2, onProcess, setCpm, cpm}) {
     const handleToggle = (setter, currentValue, key) => {
         const newValue = !currentValue;
         setter(newValue);
@@ -33,11 +33,20 @@ function DJControls({ songText, s1, setS1, d1, setD1, d2, setD2, onProcess }) {
         onProcess(processed);
     };
 
+
+    const handleCpm = (newValue) => {
+        setCpm(newValue);
+        let processed = songText;
+        processed = processed.replaceAll("<cpm>", newValue);
+        onProcess(processed);
+    }
+
     return (
         <>
             <div className="input-group mb-3">
                 <span className="input-group-text" id="cpm_label">@</span>
-                <input type="text" className="form-control" id="cpm_text_input" placeholder="120" aria-label="cpm" aria-describedby="cpm_label" />
+                <input type="text" className="form-control" id="cpm_text_input" placeholder="120" value={cpm}
+                    aria-label="cpm" aria-describedby="cpm_label" onChange={(e) => handleCpm(e.target.value)} />
 
                 
             </div>

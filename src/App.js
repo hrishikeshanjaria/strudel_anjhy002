@@ -29,7 +29,8 @@ export default function StrudelDemo() {
         return text
             .replaceAll("<s1>", s1 ? "" : "_")
             .replaceAll("<d1>", d1 ? "" : "_")
-            .replaceAll("<d2>", d2 ? "" : "_");
+            .replaceAll("<d2>", d2 ? "" : "_")
+            .replaceAll("<cpm>", cpm);
     };
 
     const handlePlay = () => {
@@ -58,6 +59,7 @@ export default function StrudelDemo() {
     const [s1, setS1] = useState(true);
     const [d1, setD1] = useState(true);
     const [d2, setD2] = useState(true);
+    const [cpm, setCpm] = useState("140");
 
 useEffect(() => {
 
@@ -143,6 +145,7 @@ return (
                             s1={s1} setS1={setS1}
                             d1={d1} setD1={setD1}
                             d2={d2} setD2={setD2}
+                            cpm={cpm} setCpm={setCpm}
                             onProcess={handleProcAndPlay} />
                     </div>
                 </div>
