@@ -1,0 +1,46 @@
+﻿/* Container setup */
+#play-stop-grp {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 15px;
+}
+
+    /* Shared button look */
+    #play-stop-grp .btn {
+        border-radius: 8px !important;
+        font-weight: 600;
+        padding: 8px 22px;
+        letter-spacing: 0.4px;
+        transition: all 0.2s ease-in-out;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+    }
+
+        /* Hover glow */
+        #play-stop-grp .btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.25);
+        }
+
+/* ▶ Play button (green theme) */
+#play {
+    border-color: #28a745;
+    color: #28a745;
+}
+
+    #play:hover {
+        background-color: #28a745;
+        color: #fff;
+    }
+
+/* ⏹ Stop button (red theme) */
+#stop {
+    border-color: #dc3545;
+    color: #dc3545;
+}
+
+    #stop:hover {
+        background-color: #dc3545;
+        color: #fff;
+    }

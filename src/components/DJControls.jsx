@@ -1,6 +1,6 @@
 ﻿import "./DJControls.css";
 
-function DJControls({ songText, s1, setS1, d1, setD1, d2, setD2, onPreprocess }) {
+function DJControls({ songText, s1, setS1, d1, setD1, d2, setD2, onProcess }) {
     const handleToggle = (setter, currentValue, key) => {
         const newValue = !currentValue;
         setter(newValue);
@@ -30,7 +30,7 @@ function DJControls({ songText, s1, setS1, d1, setD1, d2, setD2, onPreprocess })
             else processed = processed.replaceAll("<d2>", "_");
         }
 
-        onPreprocess(processed);
+        onProcess(processed);
     };
 
     return (

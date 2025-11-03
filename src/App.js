@@ -20,66 +20,35 @@ const handleD3Data = (event) => {
     console.log(event.detail);
 };
 
-//export function SetupButtons() {
-
-//    document.getElementById('play').addEventListener('click', () => globalEditor.evaluate());
-//    document.getElementById('stop').addEventListener('click', () => globalEditor.stop());
-//    document.getElementById('process').addEventListener('click', () => {
-//        Proc()
-//    }
-//    )
-//    document.getElementById('process_play').addEventListener('click', () => {
-//        if (globalEditor != null) {
-//            Proc()
-//            globalEditor.evaluate()
-//        }
-//    }
-//    )
-//}
-
-
-
-//export function ProcAndPlay() {
-//    if (globalEditor != null && globalEditor.repl.state.started == true) {
-//        console.log(globalEditor)
-//        Proc()
-//        globalEditor.evaluate();
-//    }
-//}
-
-//export function Proc() {
-
-//    let proc_text = document.getElementById('proc').value
-//    let proc_text_replaced = proc_text.replaceAll('<p1_Radio>', ProcessText);
-//    ProcessText(proc_text);
-//    globalEditor.setCode(proc_text_replaced)
-//}
-
-//export function ProcessText(match, ...args) {
-
-//    let replace = ""
-//    //if (document.getElementById('flexRadioDefault2').checked) {
-//    //    replace = "_"
-//    //}
-
-//    return replace
-//}
 
 export default function StrudelDemo() {
 
     const hasRun = useRef(false);
 
+    const processSongText = (text) => {
+        return text
+            .replaceAll("<s1>", s1 ? "" : "_")
+            .replaceAll("<d1>", d1 ? "" : "_")
+            .replaceAll("<d2>", d2 ? "" : "_");
+    };
+
     const handlePlay = () => {
-        globalEditor.evaluate()
+        globalEditor.evaluate();
     }
 
     const handleStop = () => {
-        globalEditor.stop()
+        globalEditor.stop();
     }
 
     const handlePreprocess = (processed) => {
         if (globalEditor) {
             globalEditor.setCode(processed);
+        }
+    };
+
+    const handleProcAndPlay = (processed) => {
+        if (globalEditor) {
+            globalEditor.setCode(processSongText(processed));
             globalEditor.evaluate();
         }
     };
@@ -125,12 +94,8 @@ useEffect(() => {
             
         document.getElementById('proc').value = stranger_tune
 
-        let initial = stranger_tune;
-
-        initial = initial
-            .replaceAll("<s1>", s1 ? "" : "_")
-            .replaceAll("<d1>", d1 ? "" : "_")
-            .replaceAll("<d2>", d2 ? "" : "_");
+        let initial = processSongText(stranger_tune);
+                                                                          
         globalEditor.setCode(initial);
         //SetupButtons()
         //Proc()
@@ -141,35 +106,44 @@ useEffect(() => {
 
 return (
     <div>
-        <h2>Strudel Demo</h2>
+        
         <main>
 
             <div className="container-fluid">
                 <div className="row">
-                    <div className="col-md-8" style={{ maxHeight: '50vh', overflowY: 'auto' }}>
+                    <nav className="navbar navbar-light bg-light mb-3">
+                        <div className="container-fluid">
+                            <a className="navbar-brand" href="#">
+                                     Strudel Demo
+                            </a>
+                        </div>
+                    </nav>
+                </div>
+                <div className="row">
+                    <div className="col-md-6" style={{ maxHeight: '50vh', overflowY: 'auto' }}>
                         <PreprocessTextarea defaultValue={songText} onChange={(e) => setSongText(e.target.value)} />
                     </div>
-                    <div className="col-md-4">
+                    <div className="col-md-6 justify-content-end">
 
                         <nav>
-                            <ProcButtons/>
+                            <ProcButtons onPreprocess={handlePreprocess} onProcAndPlay={handleProcAndPlay} songText={songText} />
                             <br />
                             <PlayButtons onPlay={handlePlay} onStop={handleStop} />
                         </nav>
                     </div>
                 </div>
                 <div className="row">
-                    <div className="col-md-8" style={{ maxHeight: '50vh', overflowY: 'auto' }}>
+                    <div className="col-md-6" style={{ maxHeight: '50vh', overflowY: 'auto' }}>
                         <div id="editor" />
                         <div id="output" />
                     </div>
-                    <div className="col-md-4">
+                    <div className="col-md-6">
                         <DJControls
                             songText={songText}
                             s1={s1} setS1={setS1}
                             d1={d1} setD1={setD1}
                             d2={d2} setD2={setD2}
-                            onPreprocess={handlePreprocess} />
+                            onProcess={handleProcAndPlay} />
                     </div>
                 </div>
             </div>
