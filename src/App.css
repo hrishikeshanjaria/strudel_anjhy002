@@ -1,3 +1,5 @@
+
+
 .App {
   text-align: center;
 }
@@ -36,3 +38,18 @@
     transform: rotate(360deg);
   }
 }
+
+/* Fix preprocess box to have only one scrollbar */
+#proc, textarea.form-control {
+    height: 50vh;
+    overflow-y: auto;
+    background-color: #fff;
+    color: #000;
+}
+
+#editor {
+    overflow-y: auto;
+    max-height: 50vh;
+}
+
+

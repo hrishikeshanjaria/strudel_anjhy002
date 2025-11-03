@@ -1,6 +1,6 @@
 ﻿import "./DJControls.css";
 
-function DJControls({ songText, s1, setS1, d1, setD1, d2, setD2, onProcess, setCpm, cpm}) {
+function DJControls({ songText, s1, setS1, d1, setD1, d2, setD2, onProcess, setCpm, cpm, setVolume, volume}) {
     const handleToggle = (setter, currentValue, key) => {
         const newValue = !currentValue;
         setter(newValue);
@@ -41,6 +41,13 @@ function DJControls({ songText, s1, setS1, d1, setD1, d2, setD2, onProcess, setC
         onProcess(processed);
     }
 
+    const handleVolume = (newVolume) => {
+        setVolume(newVolume);
+        let processed = songText;
+        processed = processed.replaceAll("<volume>", newVolume);
+        onProcess(processed);
+    }
+
     return (
         <>
             <div className="input-group mb-3">
@@ -51,7 +58,7 @@ function DJControls({ songText, s1, setS1, d1, setD1, d2, setD2, onProcess, setC
                 
             </div>
             <label htmlFor="volume_range" className="form-label">Volume</label>
-            <input type="range" className="form-range" min="0" max="1" step="0.01" id="volume_range" />
+            <input type="range" className="form-range" min="0" max="1" step="0.01" id="volume_range" value={volume} onChange={(e) => handleVolume(e.target.value)} />
 
 
             <div className="form-check">

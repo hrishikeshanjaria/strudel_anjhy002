@@ -30,7 +30,9 @@ export default function StrudelDemo() {
             .replaceAll("<s1>", s1 ? "" : "_")
             .replaceAll("<d1>", d1 ? "" : "_")
             .replaceAll("<d2>", d2 ? "" : "_")
-            .replaceAll("<cpm>", cpm);
+            .replaceAll("<cpm>", cpm)
+            .replaceAll("<volume>", volume);
+
     };
 
     const handlePlay = () => {
@@ -60,6 +62,8 @@ export default function StrudelDemo() {
     const [d1, setD1] = useState(true);
     const [d2, setD2] = useState(true);
     const [cpm, setCpm] = useState("140");
+    const [volume, setVolume] = useState(0.5);
+
 
 useEffect(() => {
 
@@ -122,7 +126,7 @@ return (
                     </nav>
                 </div>
                 <div className="row">
-                    <div className="col-md-6" style={{ maxHeight: '50vh', overflowY: 'auto' }}>
+                    <div className="col-md-6" >
                         <PreprocessTextarea defaultValue={songText} onChange={(e) => setSongText(e.target.value)} />
                     </div>
                     <div className="col-md-6 justify-content-end">
@@ -146,7 +150,9 @@ return (
                             d1={d1} setD1={setD1}
                             d2={d2} setD2={setD2}
                             cpm={cpm} setCpm={setCpm}
-                            onProcess={handleProcAndPlay} />
+                            onProcess={handleProcAndPlay}
+                            volume={volume}
+                            setVolume={setVolume} />
                     </div>
                 </div>
             </div>
