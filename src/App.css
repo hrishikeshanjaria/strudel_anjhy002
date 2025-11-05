@@ -1,6 +1,4 @@
-
-
-.App {
+﻿.App {
   text-align: center;
 }
 
@@ -41,7 +39,7 @@
 
 /* Fix preprocess box to have only one scrollbar */
 #proc, textarea.form-control {
-    height: 50vh;
+    height: 35vh;
     overflow-y: auto;
     background-color: #fff;
     color: #000;
@@ -49,7 +47,33 @@
 
 #editor {
     overflow-y: auto;
-    max-height: 50vh;
+    max-height: 45vh;
 }
 
+/* Make the entire page background light grey */
+html, body {
+    height: 100%;
+    margin: 0;
+    background-color: #777B7E !important; /* force grey */
+}
 
+/* Ensure React app container is transparent */
+#root, .App {
+    background-color: transparent !important;
+}
+
+#proc,
+textarea.form-control,
+#editor {
+    background-color: #1e1e1e !important;
+    color: #f5f5f5 !important;
+    border-radius: 12px;
+    border: 1px solid #333;
+    box-shadow: 0 0 10px rgba(0,0,0,0.4);
+}
+
+#roll {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+}
