@@ -1,4 +1,7 @@
-﻿.App {
+﻿@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
+
+.App {
   text-align: center;
 }
 
@@ -37,7 +40,6 @@
   }
 }
 
-/* Fix preprocess box to have only one scrollbar */
 #proc, textarea.form-control {
     height: 35vh;
     overflow-y: auto;
@@ -50,14 +52,14 @@
     max-height: 45vh;
 }
 
-/* Make the entire page background light grey */
 html, body {
     height: 100%;
     margin: 0;
-    background-color: #777B7E !important; /* force grey */
+    background: url("https://images.pexels.com/photos/3784221/pexels-photo-3784221.jpeg") no-repeat center center fixed;
+    background-size: cover;
+    background-color: #777B7E !important;
 }
 
-/* Ensure React app container is transparent */
 #root, .App {
     background-color: transparent !important;
 }
@@ -76,4 +78,32 @@ textarea.form-control,
     display: none !important;
     visibility: hidden !important;
     height: 0 !important;
+}
+
+.custom-navbar {
+    background: linear-gradient( rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6) ), url("https://i.pinimg.com/originals/8a/73/83/8a7383cc0d123e40d379f8c2b6ac96ad.jpg");
+    background-size: cover;
+    background-position: center;
+    border-radius: 12px;
+    padding: 10px 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navbar-brand {
+    font-family: "Righteous", sans-serif;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: #fff;
+    text-shadow: 0 0 10px #ffd700, 0 0 25px rgba(255, 215, 0, 0.7);
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+}
+
+.navbar .navbar-brand {
+    font-size: 2.8rem !important;
+    text-shadow: 0 0 10px #ffd700, 0 0 25px rgba(255, 215, 0, 0.7);
+    text-align: center;
+    display: block;
+    width: 100%;
 }

@@ -57,7 +57,7 @@ function DJControls({ songText, s1, setS1, d1, setD1, d2, setD2, onProcess, setC
 
                 
             </div>
-            <label htmlFor="volume_range" className="form-label">Volume</label>
+            <label id="vollabel" htmlFor="volume_range" className="form-label">Volume</label>
             <input type="range" className="form-range" min="0" max="1" step="0.01" id="volume_range" value={volume} onChange={(e) => handleVolume(e.target.value)} />
 
 

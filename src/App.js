@@ -117,7 +117,7 @@ return (
 
             <div className="container-fluid">
                 <div className="row">
-                    <nav className="navbar navbar-light bg-light mb-3">
+                    <nav className="navbar custom-navbar mb-3">
                         <div className="container-fluid">
                             <a className="navbar-brand" href="#">
                                      Strudel Demo
