@@ -55,15 +55,14 @@ export default function StrudelDemo() {
             globalEditor.evaluate();
         }
     };
+    
 
     const [songText, setSongText] = useState(stranger_tune)
-
     const [s1, setS1] = useState(true);
     const [d1, setD1] = useState(true);
     const [d2, setD2] = useState(true);
     const [cpm, setCpm] = useState("140");
     const [volume, setVolume] = useState(0.5);
-
 
 useEffect(() => {
 

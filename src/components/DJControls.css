@@ -59,3 +59,14 @@
     text-shadow: 0 0 4px rgba(255, 255, 255, 0.3);
     letter-spacing: 0.4px;
 }
+
+.vertical-slider {
+    transform: rotate(-90deg);
+    width: 120px;
+    height: 10px;
+    accent-color: #ffd700;
+    cursor: pointer;
+    margin-top:65px;
+    margin-left:20px;
+}
+
