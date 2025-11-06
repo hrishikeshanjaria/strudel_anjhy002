@@ -135,12 +135,21 @@ return (
                         <PreprocessTextarea defaultValue={songText} onChange={(e) => setSongText(e.target.value)} />
                     </div>
                     <div className="col-md-6 justify-content-end">
-
-                        <nav>
-                            <ProcButtons onPreprocess={handlePreprocess} onProcAndPlay={handleProcAndPlay} songText={songText} />
-                            <br />
-                            <PlayButtons onPlay={handlePlay} onStop={handleStop} />
+                        <nav className="container">
+                            <div className="row text-center">
+                                <div className="col-md-6 col-sm-12">
+                                    <ProcButtons onPreprocess={handlePreprocess} onProcAndPlay={handleProcAndPlay} songText={songText} />
+                                </div>
+                                <div className="col-md-6 col-sm-12">
+                                    <PlayButtons onPlay={handlePlay} onStop={handleStop} />
+                                </div>
+                            </div>
                         </nav>
+                        {/*<nav>*/}
+                        {/*    <ProcButtons onPreprocess={handlePreprocess} onProcAndPlay={handleProcAndPlay} songText={songText} />*/}
+                            
+                        {/*    <PlayButtons onPlay={handlePlay} onStop={handleStop} />*/}
+                        {/*</nav>*/}
                     </div>
                 </div>
                 <div className="row">

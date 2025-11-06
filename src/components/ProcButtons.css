@@ -53,3 +53,21 @@
     background-color: #5a32a3;
     box-shadow: 0 0 18px #5a32a3;
 }
+
+    /* === ICON-ONLY BANDAGE FIX === */
+    #proc-buttons .btn {
+        font-size: 1.8rem; /* make emoji or icon bigger */
+        width: 60px; /* fixed width */
+        height: 50px; /* equal height */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+        letter-spacing: 0;
+    }
+
+        /* Optional: soft hover pulse */
+        #proc-buttons .btn:hover {
+            transform: scale(1.08);
+            transition: all 0.2s ease-in-out;
+        }

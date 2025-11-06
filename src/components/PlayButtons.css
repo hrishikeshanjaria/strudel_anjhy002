@@ -49,3 +49,19 @@
     background-color: #b32030;
     box-shadow: 0 0 20px #b32030;
 }
+
+#play, #stop {
+    font-size: 1.8rem; 
+    width: 60px; 
+    height: 50px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    letter-spacing: 0; 
+}
+
+    #play:hover, #stop:hover {
+        transform: scale(1.08);
+        transition: all 0.2s ease-in-out;
+    }
