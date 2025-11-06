@@ -31,7 +31,10 @@ export default function StrudelDemo() {
             .replaceAll("<d1>", d1 ? "" : "_")
             .replaceAll("<d2>", d2 ? "" : "_")
             .replaceAll("<cpm>", cpm)
-            .replaceAll("<volume>", volume);
+            .replaceAll("<volume>", volume)
+            .replaceAll("{volumeD1}", d1Vol)
+            .replaceAll("{volumeD2}", d2Vol)
+            .replaceAll("{volumeS1}", s1Vol)
 
     };
 
@@ -63,6 +66,9 @@ export default function StrudelDemo() {
     const [d2, setD2] = useState(true);
     const [cpm, setCpm] = useState("140");
     const [volume, setVolume] = useState(0.5);
+    const [s1Vol, sets1Vol] = useState(10);
+    const [d2Vol, setd2Vol] = useState(0.8);
+    const [d1Vol, setd1Vol] = useState(0.2);
 
 useEffect(() => {
 
@@ -151,6 +157,9 @@ return (
                             cpm={cpm} setCpm={setCpm}
                             onProcess={handleProcAndPlay}
                             volume={volume}
+                            s1Vol={s1Vol} sets1Vol={sets1Vol}
+                            d1Vol={d1Vol} setd1Vol={setd1Vol}
+                            d2Vol={d2Vol} setd2Vol={setd2Vol}
                             setVolume={setVolume} />
                     </div>
                 </div>

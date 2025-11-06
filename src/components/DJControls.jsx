@@ -1,6 +1,6 @@
 ﻿import "./DJControls.css";
 
-function DJControls({ songText, s1, setS1, d1, setD1, d2, setD2, onProcess, setCpm, cpm, setVolume, volume}) {
+function DJControls({ songText, s1, setS1, d1, setD1, d2, setD2, onProcess, setCpm, cpm, setVolume, volume, sets1Vol, setd1Vol, setd2Vol, s1Vol, d1Vol, d2Vol}) {
     const handleToggle = (setter, currentValue, key) => {
         const newValue = !currentValue;
         setter(newValue);
@@ -41,10 +41,22 @@ function DJControls({ songText, s1, setS1, d1, setD1, d2, setD2, onProcess, setC
         onProcess(processed);
     }
 
-    const handleVolume = (newVolume) => {
-        setVolume(newVolume);
+    const handleVolume = (newVolume, key) => {
         let processed = songText;
-        processed = processed.replaceAll("<volume>", newVolume);
+        if (key === "s1") {
+            sets1Vol(newVolume);
+            processed = processed.replaceAll("{volumeS1}", newVolume);
+        } else if (key === "d1") {
+            setd1Vol(newVolume);
+            processed = processed.replaceAll("{volumeD1}", newVolume);
+        } else if (key === "d2") {
+            setd2Vol(newVolume);
+            processed = processed.replaceAll("{volumeD2}", newVolume);
+        } else if (key === "mVol") {
+            setVolume(newVolume);
+            processed = processed.replaceAll("<volume>", newVolume);
+        }
+
         onProcess(processed);
     }
 
@@ -56,13 +68,13 @@ function DJControls({ songText, s1, setS1, d1, setD1, d2, setD2, onProcess, setC
                     <div className="col-3">
                         <div className="input-group mb-3">
                             <span className="input-group-text" id="cpm_label">cpm</span>
-                            <input type="text" className="form-control" id="cpm_text_input" placeholder="120" value={cpm} aria-label="cpm" aria-describedby="cpm_label" onChange={(e) => handleCpm(e.target.value)} />
+                            <input type="text" className="form-control" id="cpm_text_input" placeholder="120" value={cpm} aria-label="cpm" aria-describedby="cpm_label" onChange={(e) => handleCpm(e.target.value)} disabled />
                             <input type="range" className="form-range" min="100" max="160" step="1" id="volume_range" value={cpm} onChange={(e) => handleCpm(e.target.value)} />
                         </div>
                     </div>
                     <div className="col-3">
                         <span className="input-group-text" id="volume_label">Main Volume</span>
-                        <input type="range" className="form-range" min="0" max="1" step="0.01" id="volume_range" value={volume} onChange={(e) => handleVolume(e.target.value)} />
+                        <input type="range" className="form-range" min="0" max="1" step="0.01" id="volume_range" value={volume} onChange={(e) => handleVolume(e.target.value, "mVol")} />
                     </div>
                     <div className="col-3">
                         <span className="input-group-text">Coming Soon</span>
@@ -81,7 +93,7 @@ function DJControls({ songText, s1, setS1, d1, setD1, d2, setD2, onProcess, setC
                                 🎹
                             </label>
                         </div>
-                        <input type="range" className="form-range vertical-slider" min="0" max="1" step="0.01" value={volume} onChange={(e) => handleVolume(e.target.value)} />
+                        <input type="range" className="form-range vertical-slider" min="1" max="500" step="10" value={s1Vol} onChange={(e) => handleVolume(e.target.value, "s1")} />
                     </div>
 
                     <div className="col-2 d-flex flex-column align-items-center">
@@ -91,7 +103,7 @@ function DJControls({ songText, s1, setS1, d1, setD1, d2, setD2, onProcess, setC
                                 🥁
                             </label>
                         </div>
-                        <input type="range" className="form-range vertical-slider" min="0" max="1" step="0.01" value={volume} onChange={(e) => handleVolume(e.target.value)} />
+                        <input type="range" className="form-range vertical-slider" min="0" max="1" step="0.01" value={d1Vol} onChange={(e) => handleVolume(e.target.value, "d1")} />
                     </div>
 
                     <div className="col-2 d-flex flex-column align-items-center">
@@ -101,7 +113,7 @@ function DJControls({ songText, s1, setS1, d1, setD1, d2, setD2, onProcess, setC
                                 🥁
                             </label>
                         </div>
-                        <input type="range" className="form-range vertical-slider" min="0" max="1" step="0.01" value={volume} onChange={(e) => handleVolume(e.target.value)} />
+                        <input type="range" className="form-range vertical-slider" min="0" max="1" step="0.01" value={d2Vol} onChange={(e) => handleVolume(e.target.value, "d2")} />
                     </div>
                 </div>
             </div>
