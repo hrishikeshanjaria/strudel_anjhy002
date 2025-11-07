@@ -1,7 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\src",
+    "\\src\\components"
   ],
-  "SelectedNode": "\\ReactAssignment.sln",
   "PreviewInSolutionExplorer": false
 }
