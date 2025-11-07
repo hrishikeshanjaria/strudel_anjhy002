@@ -1,6 +1,9 @@
 ﻿import "./DJControls.css";
 
-function DJControls({ songText, s1, setS1, d1, setD1, d2, setD2, onProcess, setCpm, cpm, setVolume, volume, sets1Vol, setd1Vol, setd2Vol, s1Vol, d1Vol, d2Vol}) {
+function DJControls({ songText, s1, setS1, d1, setD1, d2, setD2, onProcess, setCpm, cpm, setVolume, volume, sets1Vol, setd1Vol, setd2Vol, s1Vol, d1Vol, d2Vol }) {
+
+    // this is a very extensive function, it takes in the setter coming from react, current value of the checkbox(true/false), key to the checkbox
+    // once it has it, it replaces the things live and hits proc and play again using the react "onProcess" variable.
     const handleToggle = (setter, currentValue, key) => {
         const newValue = !currentValue;
         setter(newValue);
@@ -33,7 +36,7 @@ function DJControls({ songText, s1, setS1, d1, setD1, d2, setD2, onProcess, setC
         onProcess(processed);
     };
 
-
+    // same as toggle but this literally replaces the value
     const handleCpm = (newValue) => {
         setCpm(newValue);
         let processed = songText;
@@ -41,6 +44,7 @@ function DJControls({ songText, s1, setS1, d1, setD1, d2, setD2, onProcess, setC
         onProcess(processed);
     }
 
+    // same as cpm but kept separate to avoid confusion
     const handleVolume = (newVolume, key) => {
         let processed = songText;
         if (key === "s1") {

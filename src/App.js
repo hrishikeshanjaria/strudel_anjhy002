@@ -25,6 +25,7 @@ export default function StrudelDemo() {
 
     const hasRun = useRef(false);
 
+    // This function controls all the replacements in the preprocessing text and then is used by proc & play
     const processSongText = (text) => {
         return text
             .replaceAll("<s1>", s1 ? "" : "_")
@@ -46,12 +47,14 @@ export default function StrudelDemo() {
         globalEditor.stop();
     }
 
+    // this fucntion just sets the preprocessTextarea's text to strudel repl
     const handlePreprocess = (processed) => {
         if (globalEditor) {
             globalEditor.setCode(processed);
         }
     };
 
+    // this function adapts with changes in the textarea and evalutes it in strudel repl (basically play it)
     const handleProcAndPlay = (processed) => {
         if (globalEditor) {
             globalEditor.setCode(processSongText(processed));
@@ -59,7 +62,7 @@ export default function StrudelDemo() {
         }
     };
     
-
+    // these are all the react useState's which then each components takes in and uses these setter to change these values
     const [songText, setSongText] = useState(stranger_tune)
     const [s1, setS1] = useState(true);
     const [d1, setD1] = useState(true);
@@ -70,6 +73,7 @@ export default function StrudelDemo() {
     const [d2Vol, setd2Vol] = useState(0.8);
     const [d1Vol, setd1Vol] = useState(0.2);
 
+// my react useeffect's purpose is to setup the website in the begin just that I can be ready to play
 useEffect(() => {
 
     if (!hasRun.current) {
