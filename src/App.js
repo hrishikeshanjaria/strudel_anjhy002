@@ -13,6 +13,7 @@ import DJControls from './components/DJControls';
 import PlayButtons from './components/PlayButtons';
 import ProcButtons from './components/ProcButtons';
 import PreprocessTextarea from './components/PreprocessTextarea';
+import SoundGraph from './components/SoundGraph';
 
 let globalEditor = null;
 
@@ -41,10 +42,12 @@ export default function StrudelDemo() {
 
     const handlePlay = () => {
         globalEditor.evaluate();
+        setIsPlaying(true);
     }
 
     const handleStop = () => {
         globalEditor.stop();
+        setIsPlaying(false);
     }
 
     // this fucntion just sets the preprocessTextarea's text to strudel repl
@@ -72,6 +75,8 @@ export default function StrudelDemo() {
     const [s1Vol, sets1Vol] = useState(10);
     const [d2Vol, setd2Vol] = useState(0.8);
     const [d1Vol, setd1Vol] = useState(0.2);
+    const [isPlaying, setIsPlaying] = useState(false);
+
 
 // my react useeffect's purpose is to setup the website in the begin just that I can be ready to play
 useEffect(() => {
@@ -149,12 +154,14 @@ return (
                                 </div>
                             </div>
                         </nav>
+                        <div className="row"><SoundGraph isPlaying={isPlaying} /></div>
                         {/*<nav>*/}
                         {/*    <ProcButtons onPreprocess={handlePreprocess} onProcAndPlay={handleProcAndPlay} songText={songText} />*/}
                             
                         {/*    <PlayButtons onPlay={handlePlay} onStop={handleStop} />*/}
                         {/*</nav>*/}
                     </div>
+                    
                 </div>
                 <div className="row">
                     <div className="col-md-6" style={{ maxHeight: '50vh', overflowY: 'auto' }}>
@@ -162,6 +169,7 @@ return (
                         <div id="output" />
                     </div>
                     <div className="col-md-6">
+                        
                         <DJControls
                             songText={songText}
                             s1={s1} setS1={setS1}
