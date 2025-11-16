@@ -154,7 +154,7 @@ return (
                                 </div>
                             </div>
                         </nav>
-                        <div className="row"><SoundGraph isPlaying={isPlaying} /></div>
+                        <div className="row mb-3 me-1"><SoundGraph isPlaying={isPlaying} /></div>
                         {/*<nav>*/}
                         {/*    <ProcButtons onPreprocess={handlePreprocess} onProcAndPlay={handleProcAndPlay} songText={songText} />*/}
                             
