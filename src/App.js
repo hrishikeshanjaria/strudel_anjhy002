@@ -51,14 +51,14 @@ export default function StrudelDemo() {
     }
 
     // this fucntion just sets the preprocessTextarea's text to strudel repl
-    const handlePreprocess = (processed) => {
+    const handlePreprocess = () => {
         if (globalEditor) {
-            globalEditor.setCode(processed);
+            globalEditor.setCode(processSongText());
         }
     };
 
     // this function adapts with changes in the textarea and evalutes it in strudel repl (basically play it)
-    const handleProcAndPlay = (processed) => {
+    const handleProcAndPlay = () => {
         if (globalEditor) {
             globalEditor.setCode(processSongText());
             globalEditor.evaluate();

@@ -86,17 +86,18 @@ function DJControls({ s1, setS1, d1, setD1, d2, setD2, onProcess, setCpm, cpm, s
                 </div>
                 </div>
                 <div className="card col-3 ms-5">
-                    <div className="row mt-3">
+                    <h6 className="text-center">Settings</h6>
+                    <div className="row mt-1">
                         <div className="col">
                             {/*<span className="input-group-text">Coming Soon</span>*/}
                             <button className="btn btn-primary w-100" onClick={saveJSON}>
-                                Save Settings
+                                Save Config
                             </button>
                         </div>
-                        <div className="col mt-2">
+                        <div className="col">
                             {/*<span className="input-group-text">Coming Soon</span>*/}
                             <button className="btn btn-danger w-100" onClick={loadJSON}>
-                                Load Settings
+                                Load JSON
                             </button>
                         </div>
                     </div>
