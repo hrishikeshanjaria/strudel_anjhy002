@@ -101,7 +101,7 @@ function SoundGraph({ isPlaying }) {
     return (
         <div ref={wrapperRef} className="soundgraph-container">
             <h5 className="soundgraph-title">Sound Graph</h5>
-            <svg ref={svgRef} className="soundgraph-svg" style={{ backgroundColor: "#FFFFFF" }}></svg>
+            <svg ref={svgRef} className="soundgraph-svg"></svg>
         </div>
     );
 }
