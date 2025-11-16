@@ -27,8 +27,8 @@ export default function StrudelDemo() {
     const hasRun = useRef(false);
 
     // This function controls all the replacements in the preprocessing text and then is used by proc & play
-    const processSongText = (text) => {
-        return text
+    const processSongText = () => {
+        return songText
             .replaceAll("<s1>", s1 ? "" : "_")
             .replaceAll("<d1>", d1 ? "" : "_")
             .replaceAll("<d2>", d2 ? "" : "_")
@@ -60,8 +60,9 @@ export default function StrudelDemo() {
     // this function adapts with changes in the textarea and evalutes it in strudel repl (basically play it)
     const handleProcAndPlay = (processed) => {
         if (globalEditor) {
-            globalEditor.setCode(processSongText(processed));
+            globalEditor.setCode(processSongText());
             globalEditor.evaluate();
+            setIsPlaying(true);
         }
     };
     
@@ -76,6 +77,17 @@ export default function StrudelDemo() {
     const [d2Vol, setd2Vol] = useState(0.8);
     const [d1Vol, setd1Vol] = useState(0.2);
     const [isPlaying, setIsPlaying] = useState(false);
+
+
+useEffect(() => {
+    if (!isPlaying) return;   // only auto-update while playing
+
+    // Auto regenerate and play Strudel
+    if (globalEditor) {
+        globalEditor.setCode(processSongText());
+        globalEditor.evaluate();
+    }
+}, [cpm, volume, s1, d1, d2, s1Vol, d1Vol, d2Vol]);
 
 
 // my react useeffect's purpose is to setup the website in the begin just that I can be ready to play
@@ -177,6 +189,7 @@ return (
                             d2={d2} setD2={setD2}
                             cpm={cpm} setCpm={setCpm}
                             onProcess={handleProcAndPlay}
+                            cleanText={processSongText}
                             volume={volume}
                             s1Vol={s1Vol} sets1Vol={sets1Vol}
                             d1Vol={d1Vol} setd1Vol={setd1Vol}
