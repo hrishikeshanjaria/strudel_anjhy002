@@ -1,6 +1,6 @@
 ﻿import "./DJControls.css";
 
-function DJControls({ s1, setS1, d1, setD1, d2, setD2, onProcess, setCpm, cpm, setVolume, volume, sets1Vol, setd1Vol, setd2Vol, s1Vol, d1Vol, d2Vol }) {
+function DJControls({ s1, setS1, d1, setD1, d2, setD2, onProcess, setCpm, cpm, setVolume, volume, sets1Vol, setd1Vol, setd2Vol, s1Vol, d1Vol, d2Vol, setJsonText, jsonText }) {
 
     const handleToggle = (setter, currentValue) => {
         setter(!currentValue);
@@ -8,6 +8,29 @@ function DJControls({ s1, setS1, d1, setD1, d2, setD2, onProcess, setCpm, cpm, s
 
     const handleVolume = (newVolume, setter) => {
         setter(newVolume);
+    }
+
+    const saveJSON = () => {
+        const data = { cpm, volume, s1, d1, d2, s1Vol, d1Vol, d2Vol };
+        setJsonText(JSON.stringify(data, null, 2));
+    }
+
+    const loadJSON = () => {
+        try {
+            const data = JSON.parse(jsonText);
+
+            if (data.cpm !== undefined) setCpm(data.cpm);
+            if (data.volume !== undefined) setVolume(data.volume);
+            if (data.s1 !== undefined) setS1(data.s1);
+            if (data.d1 !== undefined) setD1(data.d1);
+            if (data.d2 !== undefined) setD2(data.d2);
+            if (data.s1Vol !== undefined) sets1Vol(data.s1Vol);
+            if (data.d1Vol !== undefined) setd1Vol(data.d1Vol);
+            if (data.d2Vol !== undefined) setd2Vol(data.d2Vol);
+
+        } catch (err) {
+            alert("Invalid JSON!");
+        }
     }
 
     return (
@@ -28,13 +51,13 @@ function DJControls({ s1, setS1, d1, setD1, d2, setD2, onProcess, setCpm, cpm, s
                     </div>
                     <div className="col-3">
                         {/*<span className="input-group-text">Coming Soon</span>*/}
-                        <button className="btn btn-outline-primary w-100">
+                        <button className="btn btn-primary w-100" onClick={saveJSON}>
                             Save JSON
                         </button>
                     </div>
                     <div className="col-3">
                         {/*<span className="input-group-text">Coming Soon</span>*/}
-                        <button className="btn btn-outline-danger w-100">
+                        <button className="btn btn-danger w-100" onClick={loadJSON}>
                             Load JSON
                         </button>
                     </div>
@@ -73,8 +96,9 @@ function DJControls({ s1, setS1, d1, setD1, d2, setD2, onProcess, setCpm, cpm, s
                         </div>
                         <input type="range" className="form-range vertical-slider" min="0" max="1" step="0.01" value={d2Vol} onChange={(e) => handleVolume(e.target.value, setd2Vol)} />
                     </div>
-                    <div className="col-4 ms-">
-                        <textarea className="form-control" rows="6" placeholder="JSON will appear here..."></textarea>
+                    <div className="col-4 ms-2">
+                        <label id="label" htmlFor="settings" className="form-label">Settings</label>
+                        <textarea className="form-control" id="settings" rows="6" placeholder="JSON will appear here..." value={jsonText} onChange={(e) => setJsonText(e.target.value)} ></textarea>
                     </div>
                 </div>
             </div>

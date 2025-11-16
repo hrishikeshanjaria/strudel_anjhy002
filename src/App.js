@@ -76,6 +76,7 @@ export default function StrudelDemo() {
     const [s1Vol, sets1Vol] = useState(10);
     const [d2Vol, setd2Vol] = useState(0.8);
     const [d1Vol, setd1Vol] = useState(0.2);
+    const [jsonText, setJsonText] = useState("");
     const [isPlaying, setIsPlaying] = useState(false);
 
 
@@ -194,7 +195,9 @@ return (
                             s1Vol={s1Vol} sets1Vol={sets1Vol}
                             d1Vol={d1Vol} setd1Vol={setd1Vol}
                             d2Vol={d2Vol} setd2Vol={setd2Vol}
-                            setVolume={setVolume} />
+                            setVolume={setVolume}
+                            jsonText={jsonText} setJsonText={setJsonText}
+                        />
                     </div>
                 </div>
             </div>
