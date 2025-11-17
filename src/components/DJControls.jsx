@@ -11,7 +11,7 @@ function DJControls({ s1, setS1, d1, setD1, d2, setD2, onProcess, setCpm, cpm, s
     }
 
     const saveJSON = () => {
-        const data = { cpm, volume, s1, d1, d2, s1Vol, d1Vol, d2Vol };
+        const data = { cpm, volume, s1, d1, d2, s1Vol, d1Vol, d2Vol, reverb };
         setJsonText(JSON.stringify(data, null, 2));
     }
 
@@ -27,7 +27,7 @@ function DJControls({ s1, setS1, d1, setD1, d2, setD2, onProcess, setCpm, cpm, s
             if (data.s1Vol !== undefined) sets1Vol(data.s1Vol);
             if (data.d1Vol !== undefined) setd1Vol(data.d1Vol);
             if (data.d2Vol !== undefined) setd2Vol(data.d2Vol);
-
+            if (data.reverb !== undefined) setReverb(data.reverb);
         } catch (err) {
             alert("Invalid JSON!");
         }
