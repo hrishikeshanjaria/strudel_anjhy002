@@ -41,6 +41,7 @@ export default function StrudelDemo() {
     };
 
     const handlePlay = () => {
+        globalEditor.setCode(processSongText());
         globalEditor.evaluate();
         setIsPlaying(true);
     }
