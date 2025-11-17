@@ -1,6 +1,6 @@
 ﻿import "./DJControls.css";
 
-function DJControls({ s1, setS1, d1, setD1, d2, setD2, onProcess, setCpm, cpm, setVolume, volume, sets1Vol, setd1Vol, setd2Vol, s1Vol, d1Vol, d2Vol, setJsonText, jsonText }) {
+function DJControls({ s1, setS1, d1, setD1, d2, setD2, onProcess, setCpm, cpm, setVolume, volume, sets1Vol, setd1Vol, setd2Vol, s1Vol, d1Vol, d2Vol, setJsonText, jsonText, reverb, setReverb }) {
 
     const handleToggle = (setter, currentValue) => {
         setter(!currentValue);
@@ -52,8 +52,8 @@ function DJControls({ s1, setS1, d1, setD1, d2, setD2, onProcess, setCpm, cpm, s
                         <input type="range" className="form-range" min="0" max="1" step="0.01" id="volume_range" value={volume} onChange={(e) => setVolume(e.target.value, "mVol")} />
                     </div>
                     <div className="col">
-                        <span className="input-group-text" id="volume_label">Main Volume</span>
-                        <input type="range" className="form-range" min="0" max="1" step="0.01" id="volume_range" value={volume} onChange={(e) => setVolume(e.target.value, "mVol")} />
+                            <span className="input-group-text" id="reverb">Reverb</span>
+                            <input type="range" className="form-range" min="0" max="1" step="0.01" id="reverb" value={reverb} onChange={(e) => { setReverb(e.target.value); onProcess(); }} />
                     </div>
                 </div>
                 <div className="row justify-content-center">
