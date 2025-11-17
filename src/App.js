@@ -37,7 +37,7 @@ export default function StrudelDemo() {
             .replaceAll("{volumeD1}", d1Vol)
             .replaceAll("{volumeD2}", d2Vol)
             .replaceAll("{volumeS1}", s1Vol)
-            .replaceAll("<reverb>", reverb)
+            .replaceAll("<echo>", echo)
 
     };
 
@@ -79,7 +79,7 @@ export default function StrudelDemo() {
     const [d2Vol, setd2Vol] = useState(0.8);
     const [d1Vol, setd1Vol] = useState(0.2);
     const [jsonText, setJsonText] = useState("");
-    const [reverb, setReverb] = useState(0);
+    const [echo, setEcho] = useState(0);
     const [isPlaying, setIsPlaying] = useState(false);
 
 
@@ -91,7 +91,7 @@ useEffect(() => {
         globalEditor.setCode(processSongText());
         globalEditor.evaluate();
     }
-}, [cpm, volume, s1, d1, d2, s1Vol, d1Vol, d2Vol, reverb]);
+}, [cpm, volume, s1, d1, d2, s1Vol, d1Vol, d2Vol, echo]);
 
 
 // my react useeffect's purpose is to setup the website in the begin just that I can be ready to play
@@ -200,7 +200,7 @@ return (
                             d2Vol={d2Vol} setd2Vol={setd2Vol}
                             setVolume={setVolume}
                             jsonText={jsonText} setJsonText={setJsonText}
-                            reverb={reverb} setReverb={setReverb}
+                            echo={echo} setEcho={setEcho}
                         />
                     </div>
                 </div>
