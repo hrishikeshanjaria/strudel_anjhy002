@@ -15,12 +15,13 @@ import ProcButtons from './components/ProcButtons';
 import PreprocessTextarea from './components/PreprocessTextarea';
 import SoundGraph from './components/SoundGraph';
 
+// This file is the main brain and has all the base logic in it. 
+
 let globalEditor = null;
 
 const handleD3Data = (event) => {
     console.log(event.detail);
 };
-
 
 export default function StrudelDemo() {
 
@@ -41,12 +42,14 @@ export default function StrudelDemo() {
 
     };
 
+    // Play function to start the strudel tune
     const handlePlay = () => {
         globalEditor.setCode(processSongText());
         globalEditor.evaluate();
         setIsPlaying(true);
     }
 
+    // stop function to stop the strudel tune
     const handleStop = () => {
         globalEditor.stop();
         setIsPlaying(false);
@@ -82,7 +85,7 @@ export default function StrudelDemo() {
     const [echo, setEcho] = useState(0);
     const [isPlaying, setIsPlaying] = useState(false);
 
-
+// this useeffect is for applying changes to the preprocessing text (stranger tune) whenever any of the component changes its state.
 useEffect(() => {
     if (!isPlaying) return;   // only auto-update while playing
 

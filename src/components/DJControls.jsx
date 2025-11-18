@@ -1,20 +1,28 @@
 ﻿import "./DJControls.css";
 
+// DJcontrols component manages the s1, d1, d2 instruments, volume and instrument intensity,
+// echo feature, cpm, and JSON Feature(SAVE AND LOAD), it has sliders, checkboxes and textareas used to make things useable.
 function DJControls({ s1, setS1, d1, setD1, d2, setD2, onProcess, setCpm, cpm, setVolume, volume, sets1Vol, setd1Vol, setd2Vol, s1Vol, d1Vol, d2Vol, setJsonText, jsonText, echo, setEcho }) {
 
+    // This function simply sets the current value(true/false) to the instrument on/off which then is converted in app.js to "_" or " ".
     const handleToggle = (setter, currentValue) => {
         setter(!currentValue);
     };
 
+    // This function manages the volume/intensity of things, setter property decides which volume is being controlled
     const handleVolume = (newVolume, setter) => {
         setter(newVolume);
     }
 
+
+    // This function uses stringify from JSON to convert all the data we have from our controls variable to JSON.
     const saveJSON = () => {
         const data = { cpm, volume, s1, d1, d2, s1Vol, d1Vol, d2Vol, echo };
         setJsonText(JSON.stringify(data, null, 2));
     }
 
+    // This function uses JSON.parse() to use the data saved/inputted in the text area and applies it to all the controls.
+    // Because of this function we can use the saved data or enter data for multiple controls and apply it all at once.
     const loadJSON = () => {
         try {
             const data = JSON.parse(jsonText);
@@ -107,7 +115,6 @@ function DJControls({ s1, setS1, d1, setD1, d2, setD2, onProcess, setCpm, cpm, s
                     </div>
                 
                     <div className="row card-body">
-                        {/*<label id="label" htmlFor="settings" className="form-label" style={{ color:"#ffffff"}}>Settings</label>*/}
                         <textarea className="form-control" id="settings" rows="6" placeholder="JSON will appear here..." value={jsonText} onChange={(e) => setJsonText(e.target.value)} ></textarea>
                     </div>
                 </div>
